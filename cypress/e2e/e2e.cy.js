@@ -12,7 +12,14 @@ describe("할 일 항목이 존재하지 않는다면", () => {
     );
   });
 
-  // it("완료된 ")
+  it("완료되지 않은 할 일과 완료된 할 일의 개수가 모두 0으로 노출된다.", () => {
+    cy.get("#statusSection .status-wrapper div")
+      .first()
+      .should("have.text", "☑️ 0");
+    cy.get("#statusSection .status-wrapper div")
+      .last()
+      .should("have.text", "✅ 0");
+  });
 });
 
 describe("할 일을 입력한 후 엔터키를 누르면", () => {
@@ -24,6 +31,12 @@ describe("할 일을 입력한 후 엔터키를 누르면", () => {
     cy.get("#inputSection input")
       .type(`${todo}`)
       .trigger("keypress", { key: "Enter" });
+  });
+
+  it(`"✓ There are not to-do items. Please write your first to-do!" 메시지가 사라진다.`, () => {
+    cy.get("#listSection .emptyset-wrapper .emptyset-content").should(
+      "not.exist",
+    );
   });
 
   it("입력한 항목이 할 일 목록에 노출된다.", () => {
