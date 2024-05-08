@@ -29,8 +29,8 @@ export const ListSectionExample = {
   args: {
     $listSection: document.createElement("div"),
     initialTodoList: [
-      { isChecked: false, content: "1번 할 일" },
-      { isChecked: true, content: "2번 할 일" },
+      { todoNo: 0, isChecked: false, content: "1번 할 일" },
+      { todoNo: 1, isChecked: true, content: "2번 할 일" },
     ],
     itemClickEvent: fn(),
   },

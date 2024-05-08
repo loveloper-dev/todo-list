@@ -64,7 +64,11 @@ export default class TodoListApp {
     if (!content) return;
 
     this.resetInput();
-    this.setTodoList("ADD", { isChecked: false, content }, this.todoList);
+    this.setTodoList(
+      "ADD",
+      { todoNo: this.todoList.length, isChecked: false, content },
+      this.todoList,
+    );
 
     this.render();
 
@@ -73,10 +77,13 @@ export default class TodoListApp {
 
   /**
    * 할 일 체크 / 해제
-   * @param {*} index 대상 index
+   * @param {*} todoNo 체크 / 해제 대상 todo의 todoNo
    */
-  toggleCompleted(index) {
-    const targetTodo = this.todoList.splice(index, 1)[0];
+  toggleCompleted(todoNo) {
+    const targetIndex = this.todoList.findIndex(
+      (todo) => todo.todoNo === todoNo,
+    );
+    const targetTodo = this.todoList.splice(targetIndex, 1)[0];
 
     if (targetTodo.isChecked) {
       targetTodo.isChecked = false;

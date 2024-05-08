@@ -3,9 +3,9 @@ import TodoListApp from "../components/TodoListApp";
 describe("Jest Test", () => {
   it("setTodoList", () => {
     const todoList = [
-      { isChecked: false, content: "1번 업무" },
-      { isChecked: false, content: "2번 업무" },
-      { isChecked: true, content: "3번 업무" },
+      { todoNo: 0, isChecked: false, content: "1번 업무" },
+      { todoNo: 1, isChecked: false, content: "2번 업무" },
+      { todoNo: 2, isChecked: true, content: "3번 업무" },
     ];
 
     const todoListApp = new TodoListApp();

@@ -1,4 +1,5 @@
 import { fn } from "@storybook/test";
+import { actions } from "@storybook/addon-actions";
 
 import StatusSection from "../components/StatusSection/StatusSection";
 
@@ -27,6 +28,7 @@ export default {
       control: { type: "select" },
       options: ["ALL", "ACTIVE", "COMPLETED"],
     },
+    ...actions("onClick"),
   },
 };
 
@@ -34,8 +36,8 @@ export const StatusSectionExample = {
   args: {
     $element: null,
     initialTodoList: [
-      { isChecked: false, content: "1번 할 일" },
-      { isChecked: true, content: "2번 할 일" },
+      { todoNo: 0, isChecked: false, content: "1번 할 일" },
+      { todoNo: 1, isChecked: true, content: "2번 할 일" },
     ],
     filterType: "ALL",
     filterClickEvent: fn(),

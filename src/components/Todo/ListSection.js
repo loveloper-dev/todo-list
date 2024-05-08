@@ -27,12 +27,12 @@ export default class ListSection {
       );
     } else {
       const $ul = document.createElement("ul");
-      this._todoList.forEach((todo, index) => {
+      this._todoList.forEach((todo) => {
         $ul.appendChild(
           new TodoItem(
             todo.isChecked,
             todo.content,
-            this._itemClickEvent.bind(this, index),
+            this._itemClickEvent.bind(this, todo.todoNo),
           ).render(),
         );
       });
