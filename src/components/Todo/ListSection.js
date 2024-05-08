@@ -32,7 +32,7 @@ export default class ListSection {
           new TodoItem(
             todo.isChecked,
             todo.content,
-            this._itemClickEvent.bind(this, todo.todoNo),
+            this._itemClickEvent.bind(this, todo.todoId),
           ).render(),
         );
       });

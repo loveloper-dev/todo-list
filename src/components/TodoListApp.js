@@ -1,3 +1,5 @@
+import { v4 as UUID4 } from "uuid";
+
 import InputSection from "./InputSection/InputSection";
 import ListSection from "./Todo/ListSection";
 import StatusSection from "./StatusSection/StatusSection";
@@ -44,14 +46,14 @@ export default class TodoListApp {
     switch (type) {
       case "CHECK":
         targetTodoList.push(todo);
-        return targetTodoList;
+        break;
       case "ADD":
       case "UNCHECK":
         targetTodoList.unshift(todo);
-        return targetTodoList;
+        break;
       default:
         targetTodoList.unshift(todo);
-        return targetTodoList;
+        break;
     }
   }
 
@@ -66,7 +68,7 @@ export default class TodoListApp {
     this.resetInput();
     this.setTodoList(
       "ADD",
-      { todoNo: this.todoList.length, isChecked: false, content },
+      { todoId: UUID4(), isChecked: false, content },
       this.todoList,
     );
 
@@ -77,11 +79,11 @@ export default class TodoListApp {
 
   /**
    * 할 일 체크 / 해제
-   * @param {*} todoNo 체크 / 해제 대상 todo의 todoNo
+   * @param {*} todoId 체크 / 해제 대상 todo의 id
    */
-  toggleCompleted(todoNo) {
+  toggleCompleted(todoId) {
     const targetIndex = this.todoList.findIndex(
-      (todo) => todo.todoNo === todoNo,
+      (todo) => todo.todoId === todoId,
     );
     const targetTodo = this.todoList.splice(targetIndex, 1)[0];
 

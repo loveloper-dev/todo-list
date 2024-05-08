@@ -13,7 +13,6 @@ export default class Emptyset {
 
     $wapper.appendChild($content);
 
-    console.log($wapper);
     return $wapper;
   }
 }

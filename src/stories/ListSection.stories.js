@@ -1,4 +1,5 @@
 import { fn } from "@storybook/test";
+import { v4 as UUID4 } from "uuid";
 
 import ListSection from "../components/Todo/ListSection";
 
@@ -29,8 +30,16 @@ export const ListSectionExample = {
   args: {
     $listSection: document.createElement("div"),
     initialTodoList: [
-      { todoNo: 0, isChecked: false, content: "1번 할 일" },
-      { todoNo: 1, isChecked: true, content: "2번 할 일" },
+      {
+        todoId: UUID4(),
+        isChecked: false,
+        content: "1번 할 일",
+      },
+      {
+        todoId: UUID4(),
+        isChecked: true,
+        content: "2번 할 일",
+      },
     ],
     itemClickEvent: fn(),
   },

@@ -36,8 +36,8 @@ export const StatusSectionExample = {
   args: {
     $element: null,
     initialTodoList: [
-      { todoNo: 0, isChecked: false, content: "1번 할 일" },
-      { todoNo: 1, isChecked: true, content: "2번 할 일" },
+      { todoId: 'b2bdb2c9-707c-4c66-ae12-531a7f9d5e77', isChecked: false, content: "1번 할 일" },
+      { todoId: '72bdb2c9-708c-4c66-ae12-531a7f9d5e51', isChecked: true, content: "2번 할 일" },
     ],
     filterType: "ALL",
     filterClickEvent: fn(),
