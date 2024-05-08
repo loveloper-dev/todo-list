@@ -38,6 +38,10 @@ body {
 }
 
 /*** todo list 영역 ***/
+#listSection {
+  margin-bottom: 50px;
+}
+
 /* todo item */
 .todo-item {
   padding: 15px;
@@ -58,7 +62,6 @@ body {
 
 /*** status 영역 ***/
 #statusSection {
-  padding: 30px 0 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
