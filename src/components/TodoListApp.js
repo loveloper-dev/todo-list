@@ -63,7 +63,7 @@ export default class TodoListApp {
    * @returns void
    */
   addTodo(content) {
-    if (!content) return;
+    if (!content.replace(/\s/g, "")) return;
 
     this.resetInput();
     this.setTodoList(
@@ -178,6 +178,8 @@ export default class TodoListApp {
 
     this.drawTodoList();
     this.drawStatusSection();
+
+    return this._$element;
   }
 
   init = () => {
