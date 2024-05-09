@@ -4,15 +4,15 @@ export default class Emptyset {
   }
 
   render() {
-    const $wapper = document.createElement("div");
-    $wapper.className = "emptyset-wrapper";
+    const $wrapper = document.createElement("div");
+    $wrapper.className = "emptyset-wrapper";
 
     const $content = document.createElement("div");
     $content.className = "emptyset-content";
     $content.innerText = this._content;
 
-    $wapper.appendChild($content);
+    $wrapper.appendChild($content);
 
-    return $wapper;
+    return $wrapper;
   }
 }
