@@ -6,6 +6,10 @@ export default class InputSection {
     this.$inputSection = null;
   }
 
+  reset() {
+    this.$input.value = "";
+  }
+
   render() {
     if (!this.$input) {
       this.$input = document.createElement("input");

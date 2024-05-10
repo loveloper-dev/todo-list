@@ -33,7 +33,7 @@ export default class TodoListApp {
    * 입력영역 초기화
    */
   resetInput() {
-    this.inputSection.$input.value = "";
+    this.inputSection.reset();
   }
 
   /**
