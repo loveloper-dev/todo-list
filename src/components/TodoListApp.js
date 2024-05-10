@@ -133,6 +133,7 @@ export default class TodoListApp {
     if (!this.listSection) {
       this.listSection = new ListSection(
         this.$listSection,
+        this.filterType,
         this.todoList,
         this.toggleTodoStatus.bind(this),
       );
@@ -140,7 +141,7 @@ export default class TodoListApp {
       return;
     }
 
-    this.listSection.update(todoList);
+    this.listSection.update(this.filterType, todoList);
   }
 
   /**

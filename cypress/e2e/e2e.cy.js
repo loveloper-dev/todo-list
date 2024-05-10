@@ -12,6 +12,14 @@ describe("할 일 항목이 존재하지 않는다면", () => {
     );
   });
 
+  it(`단, 활성화된 필터가 All이 아니라면 "✓ There are not to-do items. Please use another filter." 메시지를 노출한다.`, () => {
+    cy.get(".filter-wrapper button:nth-child(2)").trigger("click");
+    cy.get("#listSection .emptyset-wrapper .emptyset-content").should(
+      "have.text",
+      "✓ There are not to-do items. Please use another filter.",
+    );
+  });
+
   it("완료되지 않은 할 일과 완료된 할 일의 개수가 모두 0으로 노출된다.", () => {
     cy.get("#statusSection .status-wrapper div")
       .first()

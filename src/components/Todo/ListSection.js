@@ -1,14 +1,17 @@
-import Emptyset from "../Emptyset/Emptyset.js";
-import TodoItem from "./TodoItem.js";
+import Emptyset from "../Emptyset/Emptyset";
+import TodoItem from "./TodoItem";
+import { FILTER_TYPE } from "../../constants/todo.constants";
 
 export default class ListSection {
-  constructor($listSection, initialTodoList, itemClickEvent) {
+  constructor($listSection, filterType, initialTodoList, itemClickEvent) {
     this._$listSection = $listSection;
+    this._filterType = filterType;
     this._todoList = initialTodoList;
     this._itemClickEvent = itemClickEvent;
   }
 
-  update(todoList) {
+  update(filterType, todoList) {
+    this._filterType = filterType;
     this._todoList = todoList;
     this.render();
   }
@@ -22,7 +25,7 @@ export default class ListSection {
     if (this._todoList.length < 1) {
       this._$listSection.appendChild(
         new Emptyset(
-          `✓ There are not to-do items. Please write your first to-do!`,
+          `✓ There are not to-do items. ${this._filterType === FILTER_TYPE.ALL ? "Please write your first to-do!" : "Please use another filter."}`,
         ).render(),
       );
     } else {

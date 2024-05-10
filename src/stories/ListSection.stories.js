@@ -2,6 +2,7 @@ import { fn } from "@storybook/test";
 import { v4 as UUID4 } from "uuid";
 
 import ListSection from "../components/Todo/ListSection";
+import { FILTER_TYPE } from "../constants/todo.constants";
 
 export default {
   title: "Example/ListSection",
@@ -15,6 +16,7 @@ export default {
     $listSection.appendChild(
       new ListSection(
         args.$listSection,
+        args.filterType,
         args.initialTodoList,
         args.itemClickEvent,
       ).render(),
@@ -29,6 +31,7 @@ export default {
 export const ListSectionExample = {
   args: {
     $listSection: document.createElement("div"),
+    filterType: FILTER_TYPE.ALL,
     initialTodoList: [
       {
         todoId: UUID4(),
