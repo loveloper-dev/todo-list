@@ -3,7 +3,7 @@ import { v4 as UUID4 } from "uuid";
 import InputSection from "./InputSection/InputSection";
 import ListSection from "./Todo/ListSection";
 import StatusSection from "./StatusSection/StatusSection";
-import { FILTER_TYPE } from "../constants/todo.constants";
+import { FILTER_TYPE, SET_TODO_EVENT_TYPE } from "../constants/todo.constants";
 
 export default class TodoListApp {
   constructor($element) {
@@ -44,11 +44,11 @@ export default class TodoListApp {
    */
   setTodoList(type, todo, targetTodoList) {
     switch (type) {
-      case "CHECK":
+      case SET_TODO_EVENT_TYPE.CHECK:
         targetTodoList.push(todo);
         break;
-      case "ADD":
-      case "UNCHECK":
+      case SET_TODO_EVENT_TYPE.ADD:
+      case SET_TODO_EVENT_TYPE.UNCHECK:
         targetTodoList.unshift(todo);
         break;
       default:
@@ -67,7 +67,7 @@ export default class TodoListApp {
 
     this.resetInput();
     this.setTodoList(
-      "ADD",
+      SET_TODO_EVENT_TYPE.ADD,
       { todoId: UUID4(), isChecked: false, content },
       this.todoList,
     );
@@ -81,19 +81,20 @@ export default class TodoListApp {
    * 할 일 체크 / 해제
    * @param {*} todoId 체크 / 해제 대상 todo의 id
    */
-  toggleCompleted(todoId) {
+  toggleTodoStatus(todoId) {
     const targetIndex = this.todoList.findIndex(
       (todo) => todo.todoId === todoId,
     );
     const targetTodo = this.todoList.splice(targetIndex, 1)[0];
+    targetTodo.isChecked = !targetTodo.isChecked;
 
-    if (targetTodo.isChecked) {
-      targetTodo.isChecked = false;
-      this.setTodoList("UNCHECK", targetTodo, this.todoList);
-    } else {
-      targetTodo.isChecked = true;
-      this.setTodoList("CHECK", targetTodo, this.todoList);
-    }
+    this.setTodoList(
+      targetTodo.isChecked
+        ? SET_TODO_EVENT_TYPE.CHECK
+        : SET_TODO_EVENT_TYPE.UNCHECK,
+      targetTodo,
+      this.todoList,
+    );
 
     this.render();
   }
@@ -133,7 +134,7 @@ export default class TodoListApp {
       this.listSection = new ListSection(
         this.$listSection,
         this.todoList,
-        this.toggleCompleted.bind(this),
+        this.toggleTodoStatus.bind(this),
       );
       this.listSection.render();
       return;

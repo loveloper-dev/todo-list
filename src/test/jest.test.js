@@ -1,6 +1,7 @@
 import { v4 as UUID4 } from "uuid";
 
 import TodoListApp from "../components/TodoListApp";
+import { SET_TODO_EVENT_TYPE } from "../constants/todo.constants";
 
 describe("Jest Test", () => {
   it("setTodoList", () => {
@@ -24,7 +25,7 @@ describe("Jest Test", () => {
 
     const todoListApp = new TodoListApp();
     todoListApp.setTodoList(
-      "ADD",
+      SET_TODO_EVENT_TYPE.ADD,
       {
         todoId: UUID4(),
         isChecked: false,
@@ -35,8 +36,8 @@ describe("Jest Test", () => {
 
     const checkTarget = todoList.splice(2, 1)[0];
     checkTarget.isChecked = false;
-    
-    todoListApp.setTodoList("UNCHECK", checkTarget, todoList);
+
+    todoListApp.setTodoList(SET_TODO_EVENT_TYPE.UNCHECK, checkTarget, todoList);
 
     expect(todoList[0].isChecked).toBe(false);
     expect(todoList[0].content).toBe("2번 업무");

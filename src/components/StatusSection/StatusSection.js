@@ -1,4 +1,4 @@
-import Status from "../Status/Status";
+import StatusCount from "../StatusCount/StatusCount";
 import Button from "../Button/Button";
 import { STATUS_TYPE, FILTER_TYPE } from "../../constants/todo.constants";
 
@@ -37,13 +37,13 @@ export default class StatusSection {
     const $statusWrapper = document.createElement("div");
     $statusWrapper.className = "status-wrapper";
     $statusWrapper.appendChild(
-      new Status(
+      new StatusCount(
         STATUS_TYPE.ACTIVE,
         this._todoList.filter((todo) => !todo.isChecked).length,
       ).render(),
     );
     $statusWrapper.appendChild(
-      new Status(
+      new StatusCount(
         STATUS_TYPE.COMPLETED,
         this._todoList.filter((todo) => todo.isChecked).length,
       ).render(),

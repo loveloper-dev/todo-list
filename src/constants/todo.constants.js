@@ -10,3 +10,10 @@ export const FILTER_TYPE = {
   ACTIVE: "ACTIVE",
   COMPLETED: "COMPLETED",
 };
+
+// 체크 상태
+export const SET_TODO_EVENT_TYPE = {
+  ADD: "ADD",
+  CHECK: "CHECK",
+  UNCHECK: "UNCHECK",
+};

@@ -4,7 +4,7 @@ import { actions } from "@storybook/addon-actions";
 import TodoListApp from "../components/TodoListApp";
 
 export default {
-  title: "Example/TodoList",
+  title: "Example/TodoListApp",
   tags: ["autodocs"],
   render: (args) => {
     const $element = document.createElement("div");
@@ -13,6 +13,6 @@ export default {
   argTypes: {},
 };
 
-export const TodoListExample = {
+export const TodoListAppExample = {
   args: {},
 };
